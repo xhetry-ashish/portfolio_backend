@@ -7,6 +7,7 @@ import profileRoute from "./src/routes/userProfile.js";
 dotenv.config();
 
 const port = process.env.PORT;
+const api = process.env.API;
 const app = express();
 
 //middleware
