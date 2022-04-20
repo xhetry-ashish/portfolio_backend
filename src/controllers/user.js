@@ -78,3 +78,26 @@ export const login = async (req, res) => {
     res.json({ success: false, message: err });
   }
 };
+
+//editing user
+export const editUser = async (req, res) => {
+  let userdata = {
+    username: req.body.username,
+    email: req.body.email,
+    passwordHash: bcrypt.hashSync(req.body.password, 10),
+    address: req.body.address,
+    contact: req.body.contact,
+  };
+  try {
+    let user = await User.findByIdAndUpdate(req.params.id, userdata, {
+      new: true,
+    });
+    if (!user) {
+      throw "User cannot be updated";
+    }
+
+    res.status(200).json({ success: true, data: user });
+  } catch (err) {
+    res.json({ success: false, message: err.message });
+  }
+};
