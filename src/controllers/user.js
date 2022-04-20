@@ -33,7 +33,7 @@ export const getAllUsers = async (req, res) => {
 };
 
 //creating user
-export const adduser = async (req, res) => {
+export const addUser = async (req, res) => {
   let userdata = new User({
     username: req.body.username,
     email: req.body.email,

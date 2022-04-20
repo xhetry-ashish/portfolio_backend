@@ -4,8 +4,8 @@ import morgan from "morgan";
 import cors from "cors";
 import databaseConfig from "./config.js";
 import profileRoute from "./src/routes/userProfile.js";
+import userRoute from "./src/routes/user.js";
 dotenv.config();
-
 const port = process.env.PORT;
 const api = process.env.API;
 const app = express();
@@ -22,7 +22,8 @@ app.options("*", cors());
 databaseConfig();
 
 //routes
-app.use(`${api}/user`, profileRoute);
+app.use(`${api}/profile`, profileRoute);
+app.use(`${api}/user`, userRoute);
 
 app.listen(port, () => {
   console.log(`Server is running on https://localhost:${port}`);
