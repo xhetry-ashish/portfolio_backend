@@ -13,6 +13,7 @@ function authJwt() {
       { url: /\/api\/v1\/user(.*)/, methods: ["GET", "OPTIONS"] },
       { url: /\/api\/v1\/contact(.*)/, methods: ["GET", "OPTIONS"] },
       { url: /\/api\/v1\/contact(.*)/, methods: ["POST", "OPTIONS"] },
+      { url: /\/api\/v1\/github(.*)/, methods: ["GET", "OPTIONS"] },
     ],
   });
 }
