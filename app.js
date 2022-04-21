@@ -7,6 +7,7 @@ import profileRoute from "./src/routes/userProfile.js";
 import userRoute from "./src/routes/user.js";
 import projectRoute from "./src/routes/project.js";
 import contactRoute from "./src/routes/contact.js";
+import githubRoute from "./src/routes/github.js";
 import authJwt from "./src/middleware/authorize.js";
 import errorHandler from "./src/middleware/validationError.js";
 dotenv.config();
@@ -31,6 +32,7 @@ databaseConfig();
 app.use(`${api}/profile`, profileRoute);
 app.use(`${api}/user`, userRoute);
 app.use(`${api}/project`, projectRoute);
+app.use(`${api}/github`, githubRoute);
 app.use(`${api}/contact`, contactRoute);
 
 app.listen(port, () => {
