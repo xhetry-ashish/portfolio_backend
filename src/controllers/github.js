@@ -27,8 +27,8 @@ export const addProject = async (req, res) => {
 //editing project
 export const addImage = async (req, res) => {
   try {
-    if (!mongoose.isValidObjectId(req.body.user)) {
-      res.status(401).json({ success: false, message: "Invalid user id" });
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      res.status(401).json({ success: false, message: "Invalid project id" });
     }
     const fileName = req.file.filename;
     const filePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
@@ -46,5 +46,34 @@ export const addImage = async (req, res) => {
     res.status(200).json({ success: true, data: project });
   } catch (err) {
     res.json({ success: false, message: err });
+  }
+};
+
+//get all projects
+export const getAllProjects = async (req, res) => {
+  try {
+    const project = await Github.find();
+    if (!project) {
+      res.status(404).json({ success: false, message: "Project Not Found" });
+    }
+    res.status(200).json({ success: true, data: project });
+  } catch (err) {
+    res.json({ success: false, message: err });
+  }
+};
+
+//getting a project using id
+export const getSingleProject = async (req, res) => {
+  try {
+    if (!mongoose.isValidObjectId(req.params.id)) {
+      res.status(400).json({ success: false, message: "Project Id Invalid" });
+    }
+    const project = await Github.findById(req.params.id).populate("user");
+    if (!project) {
+      res.status(404).json({ success: false, message: "Project Id Not Found" });
+    }
+    res.status(200).json({ success: true, data: project });
+  } catch (err) {
+    res.json({ success: false, message: err.message });
   }
 };
