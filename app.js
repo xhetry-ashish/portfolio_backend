@@ -5,6 +5,7 @@ import cors from "cors";
 import databaseConfig from "./config.js";
 import profileRoute from "./src/routes/userProfile.js";
 import userRoute from "./src/routes/user.js";
+import projectRoute from "./src/routes/project.js";
 dotenv.config();
 const port = process.env.PORT;
 const api = process.env.API;
@@ -24,6 +25,7 @@ databaseConfig();
 //routes
 app.use(`${api}/profile`, profileRoute);
 app.use(`${api}/user`, userRoute);
+app.use(`${api}/project`, projectRoute);
 
 app.listen(port, () => {
   console.log(`Server is running on https://localhost:${port}`);
