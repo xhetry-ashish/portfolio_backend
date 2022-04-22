@@ -8,20 +8,27 @@ export const getSingleProject = async (req, res) => {
     if (!mongoose.isValidObjectId(req.params.id)) {
       throw "Invalid Project Id";
     }
-    const project = await Project.findById(req.params.id).populate("user");
+    const project = await Project.findOne({
+      $and: [{ _id: req.params.id }, { isDeleted: false }],
+    })
+      .populate("user")
+      .select("-passwordHash");
     if (!project) {
       throw "Project Id Not found";
     }
     res.status(200).json({ success: true, data: project });
   } catch (err) {
-    res.json({ success: false, message: err.message });
+    res.json({ success: false, message: err });
   }
 };
 
 //get all projects
 export const getAllProjects = async (req, res) => {
   try {
-    const project = await Project.find().populate("user");
+    const project = await Project.find({ isDeleted: "false" })
+      .select("-isDeleted")
+      .populate("user")
+      .select("-passwordHash");
     if (!project) {
       throw "No Projects Found";
     }
@@ -101,13 +108,18 @@ export const editProject = async (req, res) => {
   }
 };
 
+//deleting project
 export const deleteProject = async (req, res) => {
   try {
     if (!mongoose.isValidObjectId(req.params.id)) {
       res.status(401).json({ success: false, message: "Invalid Project Id" });
     }
 
-    const project = await Project.findByIdAndRemove(req.params.id);
+    const project = await Project.findByIdAndUpdate(
+      req.params.id,
+      { isDeleted: true },
+      { new: true }
+    );
     if (!project) {
       res.status(401).json({ success: false, message: "Invalid Project Id" });
     }
