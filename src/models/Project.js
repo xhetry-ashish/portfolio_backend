@@ -18,6 +18,11 @@ const projectSchema = mongoose.Schema({
     type: String,
   },
 
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
+
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
