@@ -15,9 +15,9 @@ This project is simple backend for portfolio site.
 
 ## Technologies
 
-Project is created with:
+Project is created with following packages:
 
-- axios: ^0.26.1,
+- "axios": ^0.26.1,
 - "bcryptjs": "^2.4.3",
 - "cors": "^2.8.5",
 -  "dotenv": "^16.0.0",

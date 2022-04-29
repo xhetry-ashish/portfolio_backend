@@ -5,7 +5,7 @@ import {
   addProject,
   editProject,
   deleteProject,
-} from "../controllers/project.js";
+} from "../controllers/projectController.js";
 import { uploadOptions } from "../helper/imageUpload.js";
 
 const route = Router();

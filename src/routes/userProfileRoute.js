@@ -5,7 +5,7 @@ import {
   editProfile,
   addProfile,
   deleteProfile,
-} from "../controllers/userProfile.js";
+} from "../controllers/userProfileController.js";
 
 const route = Router();
 

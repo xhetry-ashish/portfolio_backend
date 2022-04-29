@@ -4,7 +4,7 @@ import {
   addProject,
   getAllProjects,
   getSingleProject,
-} from "../controllers/github.js";
+} from "../controllers/githubController.js";
 import { uploadOptions } from "../helper/imageUpload.js";
 
 const route = Router();

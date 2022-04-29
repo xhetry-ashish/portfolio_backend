@@ -25,7 +25,7 @@ export const getSingleProject = async (req, res) => {
 //get all projects
 export const getAllProjects = async (req, res) => {
   try {
-    const project = await Project.find({ isDeleted: "false" })
+    const project = await Project.find({ isDeleted: false })
       .select("-isDeleted")
       .populate("user")
       .select("-passwordHash");

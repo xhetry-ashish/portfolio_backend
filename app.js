@@ -3,11 +3,11 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import cors from "cors";
 import databaseConfig from "./config.js";
-import profileRoute from "./src/routes/userProfile.js";
-import userRoute from "./src/routes/user.js";
-import projectRoute from "./src/routes/project.js";
-import contactRoute from "./src/routes/contact.js";
-import githubRoute from "./src/routes/github.js";
+import profileRoute from "./src/routes/userProfileRoute.js";
+import userRoute from "./src/routes/userRoute.js";
+import projectRoute from "./src/routes/projectRoute.js";
+import contactRoute from "./src/routes/contactRoute.js";
+import githubRoute from "./src/routes/githubRoute.js";
 import authJwt from "./src/middleware/authorize.js";
 import errorHandler from "./src/middleware/validationError.js";
 dotenv.config();
@@ -18,12 +18,11 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(morgan("tiny")); //keeping log
-app.use(authJwt());
-app.use(errorHandler);
+// app.use(authJwt());
+// app.use(errorHandler);
 
 //enabling cors
 app.use(cors());
-app.options("*", cors());
 
 //database connection
 databaseConfig();

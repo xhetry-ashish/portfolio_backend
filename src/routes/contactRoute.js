@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { getMessage, sendMessage } from "../controllers/contact.js";
+import { getMessage, sendMessage } from "../controllers/contactController.js";
 
 const route = Router();
 

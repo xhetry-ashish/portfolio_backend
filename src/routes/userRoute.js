@@ -6,7 +6,7 @@ import {
   addUser,
   login,
   editUser,
-} from "../controllers/user.js";
+} from "../controllers/userController.js";
 
 const route = Router();
 

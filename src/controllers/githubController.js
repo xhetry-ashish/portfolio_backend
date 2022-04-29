@@ -31,7 +31,7 @@ export const addImage = async (req, res) => {
       res.status(401).json({ success: false, message: "Invalid project id" });
     }
     const fileName = req.file.filename;
-    const filePath = `${req.protocol}://${req.get("host")}/public/uploads/`;
+    const filePath = `/public/uploads/`;
 
     let project = {
       image: `${filePath}${fileName}`,
