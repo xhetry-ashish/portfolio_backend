@@ -28,7 +28,7 @@ export const sendMessage = async (req, res) => {
     if (!data) {
       throw error;
     }
-    mailSender(data.email, data.username);
+    mailSender(data.email, data.username, data.message);
     res.status(200).json({ mailSent: true, data: data });
   } catch (err) {
     res.json({ success: false, message: err });

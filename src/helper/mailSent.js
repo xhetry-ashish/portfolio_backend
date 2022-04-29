@@ -1,9 +1,9 @@
 import nodemailer from "nodemailer";
 import "dotenv/config";
 
-const mailSender = (email, username) => {
+const mailSender = (email, username, message) => {
   var transporter = nodemailer.createTransport({
-    host: "smtp.mailtrap.io",
+    host: process.env.HOST,
     port: process.env.EMAIL_PORT,
     auth: {
       user: process.env.EMAIL_USERNAME,
@@ -11,14 +11,13 @@ const mailSender = (email, username) => {
     },
   });
   var mailOptions = {
-    from: "noreply@gmail.com",
-    to: email,
-    subject: "Thanks for your response",
-    html: `<h2 >Hello ${username}!</h2>, 
-          <br>Thank you for submitting the form. Your information is recorded. I will get to you soon
-          <br>
-          <h4>Sincerely</h4>,<br>
-          <h3>Ashish`,
+    from: email,
+    to: "no-reply@gmail.com",
+    subject: `Message from ${email}`,
+    html: `<h2> You received a message from ${username}!</h2>
+          <br>${message}
+          <h4>Sincerely</h4>
+          <h3>${username}`,
   };
 
   transporter.sendMail(mailOptions, function (error, info) {
