@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import Project from "../models/GithubProject.js";
-import User from "../models/User.js";
 import axios from "axios";
 import Github from "../models/GithubProject.js";
 

@@ -18,8 +18,8 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(morgan("tiny")); //keeping log
-// app.use(authJwt());
-// app.use(errorHandler);
+app.use(authJwt());
+app.use(errorHandler);
 
 //enabling cors
 app.use(cors());
