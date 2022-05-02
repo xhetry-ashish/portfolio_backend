@@ -1,7 +1,7 @@
 import { expressjwt } from "express-jwt";
-
+import "dotenv/config";
 function authJwt() {
-  const secret = process.env.secret;
+  const secret = process.env.SECRET;
   const api = process.env.API;
   return expressjwt({
     secret,

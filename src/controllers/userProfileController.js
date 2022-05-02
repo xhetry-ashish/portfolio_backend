@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import Profile from "../models/profile.js";
+import Profile from "../models/Profile.js";
 
 //getting a profile using id
 export const getSingleProfile = async (req, res) => {
